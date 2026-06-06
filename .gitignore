@@ -38,6 +38,9 @@ cache/
 # Node / Hardhat (se reinstala con npm install)
 node_modules/
 
+# Secretos de testnet (Plan 4): RPC y clave privada de prueba. NUNCA commitear.
+.env
+
 # IDE / OS
 .idea/
 .vscode/
