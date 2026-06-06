@@ -1,0 +1,8 @@
+# Toolchain validado para la PoC (ver CLAUDE.md).
+# Solo ezkl queda fijo; el resto sin pin para evitar conflictos de plataforma.
+ezkl==23.0.5
+torch
+onnx
+onnxscript
+onnxruntime
+numpy

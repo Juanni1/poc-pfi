@@ -1,0 +1,14 @@
+[project]
+name = "poc-pfi"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "ezkl==23.0.5",
+    "torch",
+    "onnx",
+    "onnxscript",
+    "onnxruntime",
+    "numpy",
+]
