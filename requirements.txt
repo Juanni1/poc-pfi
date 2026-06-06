@@ -6,3 +6,6 @@ onnx
 onnxscript
 onnxruntime
 numpy
+# On-chain (Plan 3): cliente EVM y manejo de solc.
+web3
+solc-select

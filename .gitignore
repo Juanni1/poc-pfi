@@ -25,11 +25,18 @@ witness.json
 proof.json
 network.compiled
 
-# Artefactos del verifier EVM (planes posteriores)
+# Artefactos del verifier EVM (Plan 3, regenerables)
 *.sol.bin
 *.abi
+Verifier.sol
+abi.json
+verifier_addr.txt
+calldata*
 artifacts/
 cache/
+
+# Node / Hardhat (se reinstala con npm install)
+node_modules/
 
 # IDE / OS
 .idea/

@@ -11,4 +11,6 @@ dependencies = [
     "onnxscript",
     "onnxruntime",
     "numpy",
+    "web3",
+    "solc-select",
 ]
