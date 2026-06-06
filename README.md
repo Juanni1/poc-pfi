@@ -33,7 +33,7 @@ desplegado puede aceptar o rechazar on-chain.
 El flujo está partido en cuatro planes, cada uno con un comando reproducible que
 devuelve un OK/True verificable y escribe sus métricas en `metrics.log`.
 
-### Plan 1 — Modelo y export a ONNX
+### Paso 1 — Modelo y export a ONNX
 
 ```
 python export_onnx.py      # exporta model.onnx + input.json de ejemplo
@@ -49,7 +49,7 @@ python verify_model.py     # comando de cierre: OK/True
    onnxruntime y compara logits y clase predicha. **Cierra cuando coinciden**
    (`allclose=True`, misma predicción).
 
-### Plan 2 — Pipeline EZKL (prueba zkML)
+### Paso 2 — Pipeline EZKL (prueba zkML)
 
 ```
 python poc_pipeline.py     # gen_settings → ... → prove → verify; verify=True
@@ -66,7 +66,7 @@ python poc_pipeline.py     # gen_settings → ... → prove → verify; verify=T
 7. `prove` — genera la prueba (`proof.json`), cronometrada.
 8. `verify` — verifica la prueba localmente. **Cierra con `verify=True`.**
 
-### Planes 3 y 4 — Verificación on-chain
+### Pasos 3 y 4 — Verificación on-chain
 
 ```
 python poc_onchain.py      # create_evm_verifier → deploy → verify_evm; verify_evm=True
@@ -81,9 +81,9 @@ python poc_onchain.py      # create_evm_verifier → deploy → verify_evm; veri
 
 Dos modos, elegidos por entorno:
 
-- **Local (default, Plan 3):** si `L2_RPC_URL` no está seteada, autolevanta un
+- **Local (default, Paso 3):** si `L2_RPC_URL` no está seteada, autolevanta un
   nodo **Hardhat** en `127.0.0.1:8545` con la cuenta de test #0.
-- **Testnet (Plan 4):** si `L2_RPC_URL` está seteada, despliega contra esa red
+- **Testnet (Paso 4):** si `L2_RPC_URL` está seteada, despliega contra esa red
   (p. ej. Base Sepolia) usando `L2_PRIVATE_KEY`. Requiere una cuenta de prueba
   con fondos de faucet. No levanta nodo.
 
@@ -92,15 +92,15 @@ Dos modos, elegidos por entorno:
 ```
   model.py ──► export_onnx.py ──► model.onnx + input.json
                                         │
-                             verify_model.py   (Plan 1: ONNX ≈ PyTorch)
+                             verify_model.py   (Paso 1: ONNX ≈ PyTorch)
                                         │
                                   poc_pipeline.py
             gen_settings→calibrate→compile→gen_srs→setup→
-            gen_witness→prove→verify    (Plan 2: proof.json, verify=True)
+            gen_witness→prove→verify    (Paso 2: proof.json, verify=True)
                                         │
                                   poc_onchain.py
             create_evm_verifier→deploy_evm→verify_evm
-                          (Planes 3/4: verificación on-chain, verify_evm=True)
+                          (Pasos 3/4: verificación on-chain, verify_evm=True)
 ```
 
 ## Requisitos y setup
@@ -131,10 +131,10 @@ cp .env.example .env                 # completar L2_RPC_URL y L2_PRIVATE_KEY
 ## Cómo correr todo
 
 ```bash
-python export_onnx.py     # Plan 1: genera model.onnx + input.json
-python verify_model.py    # Plan 1: ONNX coincide con PyTorch (OK)
-python poc_pipeline.py    # Plan 2: genera y verifica la prueba (verify=True)
-python poc_onchain.py     # Planes 3/4: verificación on-chain (verify_evm=True)
+python export_onnx.py     # Paso 1: genera model.onnx + input.json
+python verify_model.py    # Paso 1: ONNX coincide con PyTorch (OK)
+python poc_pipeline.py    # Paso 2: genera y verifica la prueba (verify=True)
+python poc_onchain.py     # Pasos 3/4: verificación on-chain (verify_evm=True)
 ```
 
 Cada script imprime su resultado, sale con código `0` (ok) o `1` (falla) y
