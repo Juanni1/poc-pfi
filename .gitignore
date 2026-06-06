@@ -1,0 +1,37 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Logs de corridas (las métricas se regeneran en cada ejecución)
+metrics.log
+
+# Artefactos pesados de EZKL / zkML (se regeneran; ver CLAUDE.md).
+# Nota: model.onnx e input.json SÍ se versionan (son la referencia reproducible).
+*.key
+pk.key
+vk.key
+*.srs
+kzg.srs
+settings.json
+calibration.json
+witness.json
+proof.json
+network.compiled
+
+# Artefactos del verifier EVM (planes posteriores)
+*.sol.bin
+*.abi
+artifacts/
+cache/
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
